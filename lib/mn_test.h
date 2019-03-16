@@ -5,6 +5,10 @@
 #ifndef TEST_LIBRARY_LIBRARY_H
 #define TEST_LIBRARY_LIBRARY_H
 
+#include "mn_test_internal.h"
+#include <string.h>
+#include <stdio.h>
+
 /**
  * \public
  * Status of the tests. Each test function must
@@ -14,10 +18,6 @@ enum test_status
 {
     TEST_STATUS_SUCCESS, TEST_STATUS_FAILURE
 };
-
-#include "mn_test_internal.h"
-#include <string.h>
-#include <stdio.h>
 
 
 /**
@@ -51,32 +51,6 @@ enum test_status
     } \
     } while (0);
 
-
-/**
- * Assert the values are equal. Do not use, use ASSERT_{TYPE}_EQUAL instead.
- */
-#define ASSERT_VAR_EQUAL(expected, actual, printfchar, type_name)\
-__FAIL_TEST_IF_TRUE(expected\
-        , actual\
-        , printfchar\
-        , bool\
-        , expected\
-        , actual\
-        , actual != expected\
-        , "aren't equal")
-
-/**
-* Assert the values are equal. Do not use, use ASSERT_{TYPE}_UNEQUAL instead.
-*/
-#define ASSERT_VAR_UNEQUAL(unexpected, actual, printfchar, type_name)\
-  __FAIL_TEST_IF_TRUE(unexpected\
-        , actual\
-        , printfchar\
-        , type_name\
-        , unexpected\
-        , actual\
-        , actual == unexpected\
-        , "are equal")
 
 /**
  * Assert the booleans are equal.

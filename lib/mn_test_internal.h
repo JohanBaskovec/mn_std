@@ -19,4 +19,31 @@ __FUNCTION__, __FILE__, __LINE__, expected_string, actual_string); \
         } \
     } while (0);
 
+
+/**
+ * Assert the values are equal.
+ */
+#define ASSERT_VAR_EQUAL(expected, actual, printfchar, type_name)\
+__FAIL_TEST_IF_TRUE(expected\
+        , actual\
+        , printfchar\
+        , bool\
+        , expected\
+        , actual\
+        , actual != expected\
+        , "aren't equal")
+
+/**
+* Assert the values are unequal.
+*/
+#define ASSERT_VAR_UNEQUAL(unexpected, actual, printfchar, type_name)\
+  __FAIL_TEST_IF_TRUE(unexpected\
+        , actual\
+        , printfchar\
+        , type_name\
+        , unexpected\
+        , actual\
+        , actual == unexpected\
+        , "are equal")
+
 #endif //TEST_LIBRARY_MN_TEST_LIBRARY_INTERNAL_H
