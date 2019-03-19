@@ -10,33 +10,20 @@
 #include <stdio.h>
 
 /**
- * \public
  * Status of the tests. Each test function must
  * return either one of these values.
  */
 enum test_status
 {
-    TEST_STATUS_SUCCESS, TEST_STATUS_FAILURE
+    /**
+     * Indicates that the test ran without any assertion errors.
+     */
+    TEST_STATUS_SUCCESS,
+    /**
+     * Indicates that the test ran but encountered an assertion error.
+     */
+    TEST_STATUS_FAILURE
 };
-
-
-/**
- * \example test_ASSERT.h
-
- * \example test_ASSERT_BOOL_EQUAL.h
- * \example test_ASSERT_BOOL_UNEQUAL.h
- * \example test_ASSERT_CHAR_EQUAL.h
- * \example test_ASSERT_CHAR_UNEQUAL.h
- * \example test_ASSERT_INT_EQUAL.h
- * \example test_ASSERT_INT_UNEQUAL.h
- * \example test_ASSERT_NOT_NULL.h
- * \example test_ASSERT_NULL.h
- * \example test_ASSERT_STRING_EQUAL.h
- * \example test_ASSERT_STRING_UNEQUAL.h
- * \example test_ASSERT_VAR_EQUAL.h
- * \example test_ASSERT_VAR_UNEQUAL.h
- * \example tests.c
- */
 
 
 /**
@@ -179,13 +166,13 @@ __FAIL_TEST_IF_TRUE(unexpected_string\
         , "are equal")
 
 /**
- * Run the \p number_test functions from \p test_functions array,
+ * Run \p number_test functions from \p test_functions array,
  *
- * Return ::test_status' TEST_STATUS_FAILURE if any of the functions returned
- * ::test_status' TEST_STATUS_FAILURE.
+ * Return ::TEST_STATUS_FAILURE if any of the functions returned
+ * ::TEST_STATUS_FAILURE.
  *
- * Return ::test_status' TEST_STATUS_SUCCESS if all functions
- * returned ::test_status' TEST_STATUS_SUCCESS.
+ * Return ::TEST_STATUS_SUCCESS if all functions
+ * returned ::TEST_STATUS_SUCCESS.
  *
  * If a function doesn't return a value from ::test_status,
  * print an error message and return that value.
@@ -215,5 +202,26 @@ run_tests(enum test_status (**test_functions)(), int number_tests)
     }
     return tests_status;
 }
+
+
+
+/**
+ * \example test_ASSERT.h
+
+ * \example test_ASSERT_BOOL_EQUAL.h
+ * \example test_ASSERT_BOOL_UNEQUAL.h
+ * \example test_ASSERT_CHAR_EQUAL.h
+ * \example test_ASSERT_CHAR_UNEQUAL.h
+ * \example test_ASSERT_INT_EQUAL.h
+ * \example test_ASSERT_INT_UNEQUAL.h
+ * \example test_ASSERT_NOT_NULL.h
+ * \example test_ASSERT_NULL.h
+ * \example test_ASSERT_STRING_EQUAL.h
+ * \example test_ASSERT_STRING_UNEQUAL.h
+ * \example test_ASSERT_VAR_EQUAL.h
+ * \example test_ASSERT_VAR_UNEQUAL.h
+ * \example tests.c
+ */
+
 
 #endif
