@@ -102,18 +102,29 @@ __FAIL_TEST_IF_TRUE(expected_bool\
 #define ASSERT_FLOAT_UNEQUAL(unexpected, actual) \
     ASSERT_VAR_EQUAL(unexpected, actual, "%f", float)
 
+/**
+* Assert the pointer is equal to another pointer.
+*/
+#define ASSERT_POINTER_EQUAL(expected, actual) \
+    ASSERT_VAR_EQUAL(expected, actual, "%p", pointer)
+
+/**
+* Assert the pointer is not equal to another pointer.
+*/
+#define ASSERT_POINTER_UNEQUAL(expected, actual) \
+    ASSERT_VAR_UNEQUAL(expected, actual, "%p", pointer)
 
 /**
 * Assert the value is null.
 */
 #define ASSERT_NULL(actual) \
-    ASSERT_VAR_EQUAL(NULL, actual, "%p", pointer)
+    ASSERT_POINTER_EQUAL(NULL, actual)
 
 /**
 * Assert the value is not null.
 */
 #define ASSERT_NOT_NULL(actual) \
-    ASSERT_VAR_UNEQUAL(NULL, actual, "%p", pointer)
+    ASSERT_POINTER_UNEQUAL(NULL, actual)
 
 /**
 * Assert the size_t are equal.

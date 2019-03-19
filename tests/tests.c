@@ -13,6 +13,8 @@
 #include "test_ASSERT_CHAR_UNEQUAL.h"
 #include "test_ASSERT_VAR_UNEQUAL.h"
 #include "test_ASSERT_INT_UNEQUAL.h"
+#include "test_ASSERT_POINTER_EQUAL.h"
+#include "test_ASSERT_POINTER_UNEQUAL.h"
 
 
 int
@@ -29,6 +31,8 @@ main()
             , &test_ASSERT_INT_UNEQUAL_success, &test_ASSERT_INT_UNEQUAL_failure
             , &test_ASSERT_NOT_NULL_success, &test_ASSERT_NOT_NULL_failure
             , &test_ASSERT_NULL_success, &test_ASSERT_NULL_failure
+            , &test_ASSERT_POINTER_EQUAL_success, &test_ASSERT_POINTER_EQUAL_failure
+            , &test_ASSERT_POINTER_UNEQUAL_success, &test_ASSERT_POINTER_UNEQUAL_failure
             , &test_ASSERT_STRING_EQUAL_success, &test_ASSERT_STRING_EQUAL_failure
             , &test_ASSERT_STRING_UNEQUAL_success, &test_ASSERT_STRING_UNEQUAL_failure
             , &test_ASSERT_VAR_EQUAL_success, test_ASSERT_VAR_EQUAL_failure
