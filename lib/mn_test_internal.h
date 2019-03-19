@@ -27,7 +27,7 @@ __FUNCTION__, __FILE__, __LINE__, expected_string, actual_string); \
 __FAIL_TEST_IF_TRUE(expected\
         , actual\
         , printfchar\
-        , bool\
+        , type_name\
         , expected\
         , actual\
         , actual != expected\
