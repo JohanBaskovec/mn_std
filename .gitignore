@@ -2,3 +2,11 @@ html/
 latex/
 cmake-build-debug/
 .idea/
+*.swp
+*.swo
+build/CMakeCache.txt
+build/CMakeFiles
+build/cmake_install.cmake
+build/Makefile
+build/test_library_tests
+

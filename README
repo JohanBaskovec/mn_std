@@ -1,0 +1,12 @@
+## Build
+No build required.
+
+## Run tests
+```
+mkdir build
+cd build
+cmake ..
+make
+./
+```
+

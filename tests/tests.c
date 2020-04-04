@@ -16,7 +16,6 @@
 #include "test_ASSERT_POINTER_EQUAL.h"
 #include "test_ASSERT_POINTER_UNEQUAL.h"
 
-
 int
 main()
 {
