@@ -15,6 +15,7 @@
 #include "test_ASSERT_INT_UNEQUAL.h"
 #include "test_ASSERT_POINTER_EQUAL.h"
 #include "test_ASSERT_POINTER_UNEQUAL.h"
+#include "test_ASSERT_FLOAT_EQUAL.h"
 
 int
 main()
@@ -36,6 +37,7 @@ main()
             , &test_ASSERT_STRING_UNEQUAL_success, &test_ASSERT_STRING_UNEQUAL_failure
             , &test_ASSERT_VAR_EQUAL_success, test_ASSERT_VAR_EQUAL_failure
             , &test_ASSERT_VAR_UNEQUAL_success, test_ASSERT_VAR_UNEQUAL_failure
+            , &test_ASSERT_FLOAT_EQUAL_success, &test_ASSERT_FLOAT_EQUAL_failure
 
 
     };

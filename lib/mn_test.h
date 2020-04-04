@@ -7,6 +7,7 @@
 
 #include <string.h>
 #include <stdio.h>
+#include <math.h>
 
 #define ANSI_COLOR_RED     "\x1b[31m"
 #define ANSI_COLOR_RESET   "\x1b[0m"
@@ -118,31 +119,56 @@ __FAIL_TEST_IF_TRUE(expected_bool\
 */
 #define ASSERT_INT_UNEQUAL(expected_int, actual_int) \
     ASSERT_VAR_UNEQUAL(expected_int, actual_int, "%i", int)
+/**
+ * Assert the values are almost equal.
+ */
+#define ASSERT_VAR_ALMOST_EQUAL(expected, actual, printfchar, type_name, delta)\
+__FAIL_TEST_IF_TRUE(expected\
+        , actual\
+        , printfchar\
+        , type_name\
+        , expected\
+        , actual\
+        , (fabs(actual - expected) > delta)\
+        , "aren't equal")
+
+/**
+* Assert the values are unequal.
+*/
+#define ASSERT_VAR_NOT_ALMOST_UNEQUAL(unexpected, actual, printfchar, type_name, delta)\
+  __FAIL_TEST_IF_TRUE(unexpected\
+        , actual\
+        , printfchar\
+        , type_name\
+        , unexpected\
+        , actual\
+        , (fabs(actual - expected) < delta)\
+        , "are equal")
 
 /**
 * Assert the double are equal.
 */
-#define ASSERT_DOUBLE_EQUAL(expected, actual) \
-    ASSERT_VAR_EQUAL(expected, actual, "%f", double)
+#define ASSERT_DOUBLE_EQUAL(expected, actual, delta) \
+    ASSERT_VAR_ALMOST_EQUAL(expected, actual, "%f", double, delta)
 
 /**
 * Assert the double are unequal.
 */
-#define ASSERT_DOUBLE_UNEQUAL(unexpected, actual) \
-    ASSERT_VAR_EQUAL(unexpected, actual, "%f", double)
+#define ASSERT_DOUBLE_UNEQUAL(unexpected, actual, delta) \
+    ASSERT_VAR_NOT_ALMOST_EQUAL(unexpected, actual, "%f", double, delta)
 
 
 /**
 * Assert the floats are equal.
 */
-#define ASSERT_FLOAT_EQUAL(expected, actual) \
-    ASSERT_VAR_EQUAL(expected, actual, "%f", float)
+#define ASSERT_FLOAT_EQUAL(expected, actual, delta) \
+    ASSERT_VAR_ALMOST_EQUAL(expected, actual, "%f", float, delta)
 
 /**
 * Assert the floats are unequal.
 */
-#define ASSERT_FLOAT_UNEQUAL(unexpected, actual) \
-    ASSERT_VAR_EQUAL(unexpected, actual, "%f", float)
+#define ASSERT_FLOAT_UNEQUAL(unexpected, actual, delta) \
+    ASSERT_VAR_NOT_ALMOST_EQUAL(unexpected, actual, "%f", float, delta)
 
 /**
 * Assert the pointer is equal to another pointer.
